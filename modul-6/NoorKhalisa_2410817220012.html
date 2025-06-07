@@ -117,6 +117,18 @@
             color: #000;
         }
 
+        /* Kelas untuk border aktif di navigasi utama */
+        .navbar-nav .nav-item a.btn.btn-outline-dark {
+            color: #343a40;
+            border-color: #343a40;
+        }
+        .navbar-nav .nav-item a.btn.btn-outline-dark:hover {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+
         .nav-filter .nav-item a.filter-base-style {
             display: inline-block;
             padding: 6px 22px;
@@ -193,7 +205,7 @@
             <div class="collapse navbar-collapse justify-content-end custom-serif-font" id="mainNavigation">
                 <ul class="navbar-nav">
                     <li class="nav-item pe-lg-4">
-                        <a class="navbar-base-style" aria-current="page" href="#" id="navHome">HOME</a>
+                        <a class="navbar-base-style btn btn-outline-dark" aria-current="page" href="#" id="navHome">HOME</a>
                     </li>
                     <li class="nav-item pe-lg-4">
                         <a class="navbar-base-style" aria-current="page" href="#" id="navAbout">ABOUT ME</a>
@@ -222,7 +234,7 @@
     <nav class="nav justify-content-center custom-serif-font nav-filter" style="padding: 12px;">
         <ul class="nav">
             <li class="nav-item">
-                <a class="filter-base-style" aria-current="page" href="#" id="filterAll">All</a>
+                <a class="btn-outline-dark-custom" aria-current="page" href="#" id="filterAll">All</a>
             </li>
             <li class="nav-item">
                 <a class="filter-base-style" href="#" id="filterLandscape">Landscape</a>
@@ -269,76 +281,15 @@
         <div class="col d-flex flex-column align-items-center justify-content-center footer-text">
             <h1 class="brand-title">JPhotography</h1>
             <p>&copy; Copyrights 2025. All Rights Reserved</p> <div class="social-media-links mt-2">
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-dribbble"></i></a>
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-behance"></i></a>
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-instagram"></i></a>
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-500px"></i></a>
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-flickr"></i></a>
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-dribbble"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-behance"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-500px"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-flickr"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="text-decoration-none me-4"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navHome = document.getElementById('navHome');
-            const navAbout = document.getElementById('navAbout');
-            const navPortfolio = document.getElementById('navPortfolio');
-            const navContact = document.getElementById('navContact');
-            const mainNavLinks = [navHome, navAbout, navPortfolio, navContact];
-            const navActiveClasses = ['btn', 'btn-outline-dark'];
-            const navBaseClass = 'navbar-base-style';
-
-            function setActiveNavLink(clickedLink) {
-                mainNavLinks.forEach(link => {
-                    link.classList.remove(...navActiveClasses);
-                    if (!link.classList.contains(navBaseClass)) {
-                        link.classList.add(navBaseClass);
-                    }
-                });
-                clickedLink.classList.add(...navActiveClasses);
-                clickedLink.classList.remove(navBaseClass);
-            }
-
-            mainNavLinks.forEach(link => {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault(); 
-                    setActiveNavLink(this);
-                });
-            });
-            setActiveNavLink(navHome);
-
-            const filterAll = document.getElementById('filterAll');
-            const filterLandscape = document.getElementById('filterLandscape');
-            const filterPortrait = document.getElementById('filterPortrait');
-            const filterProduct = document.getElementById('filterProduct');
-            const filterLinks = [filterAll, filterLandscape, filterPortrait, filterProduct];
-            const filterActiveClass = 'btn-outline-dark-custom';
-            const filterBaseClass = 'filter-base-style';
-
-            function setActiveFilterLink(clickedLink) {
-                filterLinks.forEach(link => {
-                    link.classList.remove(filterActiveClass);
-                    if (!link.classList.contains(filterBaseClass)) {
-                        link.classList.add(filterBaseClass);
-                    }
-                });
-                clickedLink.classList.add(filterActiveClass);
-                clickedLink.classList.remove(filterBaseClass);
-            }
-
-            filterLinks.forEach(link => {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault(); 
-                    setActiveFilterLink(this);
-                    console.log('Filter by:', this.textContent);
-                });
-            });
-            setActiveFilterLink(filterAll);
-        });
-    </script>
-</body>
+    </body>
 </html>
