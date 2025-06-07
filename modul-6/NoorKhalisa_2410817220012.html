@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JPhotography</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+        .brand-title {
+            font-weight: 700;
+            font-family: "Playfair Display", serif;
+        }
+        h2, h3 {
+            font-weight: 700;
+            font-family: "Playfair Display", serif;
+        }
+        
+        p.tagline {
+            font-weight: 300; 
+            color: #6c757d;
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            padding-left: 3px; 
+        }
+        
+        .footer-text p {
+            font-weight: 400;
+            color: #6c757d;
+        }
+        
+        .social-media-links {
+            font-size: 1.8rem;
+        }
+        .main-footer-area .social-media-links a {
+            color: #000000 !important;
+        }
+        .main-footer-area .social-media-links a:hover {
+            color: #555555 !important;
+        }
+
+        .page-frame-elements div {
+            z-index: 1050;
+            pointer-events: none;
+            background-color: transparent;
+            border-color: #303030;
+            border-style: solid;
+            height: 85px;
+            position: fixed;
+            width: 85px;
+        }
+        .frame-corner-top-right {
+            border-width: 8px 8px 0 0;
+            right: 0;
+            top: 0;
+        }
+        .frame-corner-top-left {
+            border-width: 8px 0 0 8px;
+            left: 0;
+            top: 0;
+        }
+        .frame-corner-bottom-left {
+            border-width: 0 0 8px 8px;
+            left: 0;
+            bottom: 0;
+        }
+        .frame-corner-bottom-right {
+            border-width: 0 8px 8px 0;
+            right: 0;
+            bottom: 0;
+        }
+        .main-footer-area {
+            min-height: 360px;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-serif-font {
+            font-family: "Playfair Display", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .navbar-light-custom {
+            background-color: #f8f6f6;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .navbar-nav .nav-item a.navbar-base-style {
+            display: inline-block;
+            padding: 0.375rem 0.85rem;
+            line-height: 1.5;
+            color: #343a40;
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: .375rem;
+            margin-right: 0.25rem;
+        }
+        .navbar-nav .nav-item a.navbar-base-style:hover {
+            color: #000;
+        }
+
+        .nav-filter .nav-item a.filter-base-style {
+            display: inline-block;
+            padding: 6px 22px;
+            margin-left: 4px;
+            margin-right: 4px;
+            color: #5a5a5a;
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 22px;
+            line-height: 1.5;
+        }
+        .nav-filter .nav-item a.filter-base-style:hover {
+            color: #000;
+        }
+
+        .nav-filter .nav-item a.btn-outline-dark-custom {
+            display: inline-block;
+            border-radius: 22px;
+            border: 1px solid #343a40;
+            color: #343a40;
+            background-color: transparent;
+            padding: 6px 22px;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+        .nav-filter .nav-item a.btn-outline-dark-custom:hover {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        @media print {
+            .page-frame-elements, .page-frame-elements div {
+                display: none !important;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                transform: scale(0.90);
+                transform-origin: top left;
+            }
+            html, body {
+                height: auto;
+                overflow: visible;
+            }
+            .gallery-img {
+                page-break-inside: avoid;
+            }
+            .main-footer-area {
+                page-break-before: auto;
+            }
+            .navbar, .nav-filter {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-frame-elements">
+        <div class="frame-corner-top-right"></div>
+        <div class="frame-corner-top-left"></div>
+        <div class="frame-corner-bottom-left"></div>
+        <div class="frame-corner-bottom-right"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand m-2" href="#">
+                <h2 class="brand-title">JPhotography</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end custom-serif-font" id="mainNavigation">
+                <ul class="navbar-nav">
+                    <li class="nav-item pe-lg-4">
+                        <a class="navbar-base-style" aria-current="page" href="#" id="navHome">HOME</a>
+                    </li>
+                    <li class="nav-item pe-lg-4">
+                        <a class="navbar-base-style" aria-current="page" href="#" id="navAbout">ABOUT ME</a>
+                    </li>
+                    <li class="nav-item pe-lg-4">
+                        <a class="navbar-base-style" aria-current="page" href="#" id="navPortfolio">PORTFOLIO</a>
+                    </li>
+                    <li class="nav-item pe-lg-4">
+                        <a class="navbar-base-style" aria-current="page" href="#" id="navContact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    
+    <div class="text-center mt-4 mb-4">
+        <h3><b>Hi. Hello.. I Am JohnDas...! <br> I Travel Around The World To Get The Best Photos.!</b></h3>
+        <p class="tagline">AWARD WINNING PHOTOGRAPHER / CINEMATOGRAPHER / WRITER</p>
+    </div>
+
+    <br>
+    <br>
+
+    <nav class="nav justify-content-center custom-serif-font nav-filter" style="padding: 12px;">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="filter-base-style" aria-current="page" href="#" id="filterAll">All</a>
+            </li>
+            <li class="nav-item">
+                <a class="filter-base-style" href="#" id="filterLandscape">Landscape</a>
+            </li>
+            <li class="nav-item">
+                <a class="filter-base-style" href="#" id="filterPortrait">Portrait</a>
+            </li>
+            <li class="nav-item">
+                <a class="filter-base-style" href="#" id="filterProduct">Product</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="container mt-4">
+        <div class="row d-flex align-items-stretch justify-content-center mb-2 gx-2">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/pink.jpg" class="gallery-img" alt="Pink"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/green.jpg" class="gallery-img" alt="Green"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/blue.jpg" class="gallery-img" alt="Blue"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/purple.jpg" class="gallery-img" alt="Purple"></div>
+        </div>
+        <div class="row d-flex align-items-stretch justify-content-center mb-2 gx-2">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/carnation.jpg" class="gallery-img" alt="Carnation"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/kitty.jpg" class="gallery-img" alt="Kitty"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/forgetmenot.jpg" class="gallery-img" alt="Forget Me Not"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/hydrangea.jpg" class="gallery-img" alt="Hydrangea"></div>
+        </div>
+        <div class="row d-flex align-items-stretch justify-content-center mb-2 gx-2">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/sakura.jpg" class="gallery-img" alt="Sakura"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/flora.jpg" class="gallery-img" alt="Flora"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/butterfly.jpg" class="gallery-img" alt="Butterfly"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/barbie.jpg" class="gallery-img" alt="Barbie"></div>
+        </div>
+        <div class="row d-flex align-items-stretch justify-content-center mb-2 gx-2">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/mochi.jpg" class="gallery-img" alt="Mochi"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/pinkmatcha.jpg" class="gallery-img" alt="Pink Matcha"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/cheesecake.jpg" class="gallery-img" alt="Cheesecake"></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-2 d-flex"><img src="assets/donuts.jpg" class="gallery-img" alt="Donuts"></div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="main-footer-area">
+        <div class="col d-flex flex-column align-items-center justify-content-center footer-text">
+            <h1 class="brand-title">JPhotography</h1>
+            <p>&copy; Copyrights 2025. All Rights Reserved</p> <div class="social-media-links mt-2">
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-dribbble"></i></a>
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-behance"></i></a>
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-instagram"></i></a>
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-500px"></i></a>
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-flickr"></i></a>
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="javascript:void(0);" class="text-decoration-none me-4"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navHome = document.getElementById('navHome');
+            const navAbout = document.getElementById('navAbout');
+            const navPortfolio = document.getElementById('navPortfolio');
+            const navContact = document.getElementById('navContact');
+            const mainNavLinks = [navHome, navAbout, navPortfolio, navContact];
+            const navActiveClasses = ['btn', 'btn-outline-dark'];
+            const navBaseClass = 'navbar-base-style';
+
+            function setActiveNavLink(clickedLink) {
+                mainNavLinks.forEach(link => {
+                    link.classList.remove(...navActiveClasses);
+                    if (!link.classList.contains(navBaseClass)) {
+                        link.classList.add(navBaseClass);
+                    }
+                });
+                clickedLink.classList.add(...navActiveClasses);
+                clickedLink.classList.remove(navBaseClass);
+            }
+
+            mainNavLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); 
+                    setActiveNavLink(this);
+                });
+            });
+            setActiveNavLink(navHome);
+
+            const filterAll = document.getElementById('filterAll');
+            const filterLandscape = document.getElementById('filterLandscape');
+            const filterPortrait = document.getElementById('filterPortrait');
+            const filterProduct = document.getElementById('filterProduct');
+            const filterLinks = [filterAll, filterLandscape, filterPortrait, filterProduct];
+            const filterActiveClass = 'btn-outline-dark-custom';
+            const filterBaseClass = 'filter-base-style';
+
+            function setActiveFilterLink(clickedLink) {
+                filterLinks.forEach(link => {
+                    link.classList.remove(filterActiveClass);
+                    if (!link.classList.contains(filterBaseClass)) {
+                        link.classList.add(filterBaseClass);
+                    }
+                });
+                clickedLink.classList.add(filterActiveClass);
+                clickedLink.classList.remove(filterBaseClass);
+            }
+
+            filterLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); 
+                    setActiveFilterLink(this);
+                    console.log('Filter by:', this.textContent);
+                });
+            });
+            setActiveFilterLink(filterAll);
+        });
+    </script>
+</body>
+</html>
